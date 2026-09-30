@@ -1,0 +1,138 @@
+/* ════════════════════════════ FUNDADOR ════════════════════════════ */
+
+.founder__grid {
+  display: grid;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+}
+
+.founder__media {
+  position: relative;
+  max-width: 520px;
+  width: 100%;
+  margin: 0 auto;
+}
+.founder__media::before {
+  /* a moldura de fogo da marca, atrás da foto */
+  content: "";
+  position: absolute;
+  inset: 8% -4% -4% 8%;
+  border-radius: 36px;
+  background: var(--fire-grad);
+  filter: blur(0.5px);
+  opacity: 0.9;
+}
+.founder__photo {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 28px;
+  box-shadow: 0 40px 80px -40px rgba(16, 19, 31, 0.6);
+}
+.founder__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+}
+.founder__badge {
+  position: absolute;
+  left: -8px;
+  bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px 12px 14px;
+  border-radius: 18px;
+  font-size: 12.5px;
+  line-height: 1.3;
+  color: var(--ink-2);
+  background: rgba(16, 19, 31, 0.9);
+  box-shadow: 0 24px 40px -20px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.founder__badge span:last-child {
+  display: grid;
+}
+.founder__badge b {
+  font-size: 14px;
+  color: #fff;
+}
+.founder__live {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--wpp);
+  box-shadow: 0 0 0 4px rgba(34, 195, 94, 0.25);
+  animation: live 1.8s ease-in-out infinite;
+}
+
+.founder__copy {
+  display: grid;
+  gap: 22px;
+}
+.founder__copy .h2 {
+  max-width: 16ch;
+  font-size: clamp(32px, 4.4vw, 60px);
+}
+.founder__story {
+  display: grid;
+  gap: 16px;
+  max-width: 58ch;
+  font-size: 16.5px;
+  line-height: 1.65;
+  color: var(--ink-dark-2);
+}
+.founder__quote {
+  padding-left: 18px;
+  border-left: 3px solid var(--fire);
+  font-family: var(--font-display);
+  font-size: clamp(19px, 1.8vw, 23px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  color: var(--ink-dark);
+}
+.founder__sign {
+  display: grid;
+  gap: 2px;
+  justify-items: start;
+}
+.founder__signature {
+  font-family: "Brush Script MT", "Segoe Script", cursive;
+  font-size: 34px;
+  line-height: 1.1;
+  color: var(--ink-dark);
+}
+.founder__role {
+  font-size: 13px;
+  color: var(--ink-dark-2);
+}
+.founder__ig {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px var(--hair-dark);
+  transition: background 0.3s var(--ease);
+}
+.founder__ig svg {
+  width: 18px;
+  height: 18px;
+}
+@media (hover: hover) {
+  .founder__ig:hover {
+    background: #fff;
+  }
+}
+
+@media (min-width: 900px) {
+  .founder__grid {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}

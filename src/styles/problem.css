@@ -1,0 +1,243 @@
+/* ════════════════════════════ PROBLEMA ════════════════════════════ */
+
+.w {
+  display: inline-block;
+}
+
+.problem .h2 {
+  max-width: 17ch;
+}
+.problem__strike {
+  font-style: normal;
+  color: var(--fire-deep);
+}
+
+/* ─────────────────────────── números ─────────────────────────── */
+
+.stats {
+  display: grid;
+  gap: 1px;
+  margin-top: clamp(48px, 7vw, 88px);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--hair-dark);
+  box-shadow: 0 0 0 1px var(--hair-dark);
+}
+.stat {
+  display: grid;
+  gap: 8px;
+  padding: clamp(24px, 3vw, 40px);
+  background: #fff;
+}
+.stat__n {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: var(--font-display);
+  font-size: clamp(54px, 7vw, 96px);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-dark);
+}
+.stat__n small {
+  font-size: 0.42em;
+  letter-spacing: -0.02em;
+  background: var(--fire-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stat__l {
+  max-width: 28ch;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink-dark-2);
+}
+
+/* ─────────────────────────── dores ─────────────────────────── */
+
+.pains {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(84%, 340px);
+  gap: 14px;
+  margin: clamp(20px, 3vw, 32px) calc(var(--gutter) * -1) 0;
+  padding: 4px var(--gutter) 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 var(--gutter);
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.pains::-webkit-scrollbar {
+  display: none;
+}
+.pain {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 28px 26px 30px;
+  border-radius: var(--radius-lg);
+  background: #fff;
+  box-shadow:
+    0 0 0 1px var(--hair-dark),
+    0 24px 50px -34px rgba(16, 19, 31, 0.35);
+  scroll-snap-align: start;
+  transition:
+    transform 0.5s var(--ease),
+    box-shadow 0.5s var(--ease);
+}
+@media (hover: hover) {
+  .pain:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 0 0 1px rgba(251, 84, 54, 0.35),
+      0 34px 60px -34px rgba(251, 84, 54, 0.45);
+  }
+}
+.pain__n {
+  position: absolute;
+  right: 24px;
+  top: 22px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  color: #c3c7d2;
+}
+.pain__ic {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+  color: var(--fire-deep);
+  background: rgba(251, 84, 54, 0.1);
+}
+.pain__ic svg {
+  width: 22px;
+  height: 22px;
+}
+.pain h3 {
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.pain p {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-dark-2);
+}
+
+/* ──────────────────── "agora imagine o oposto" ──────────────────── */
+
+.flip {
+  display: grid;
+  gap: 32px;
+  align-items: center;
+  margin-top: clamp(64px, 10vw, 140px);
+}
+.flip__media {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 40px 80px -40px rgba(16, 19, 31, 0.5);
+}
+.flip__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.flip__chip {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 650;
+  color: #fff;
+  background: rgba(16, 19, 31, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.flip__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--wpp);
+  box-shadow: 0 0 0 4px rgba(34, 195, 94, 0.25);
+  animation: live 1.8s ease-in-out infinite;
+}
+@keyframes live {
+  50% {
+    box-shadow: 0 0 0 8px rgba(34, 195, 94, 0);
+  }
+}
+.flip__copy {
+  display: grid;
+  gap: 20px;
+}
+.flip__text {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.18;
+  text-wrap: pretty;
+}
+.flip__text em {
+  font-style: normal;
+}
+.flip__close {
+  font-size: 17px;
+  color: var(--ink-dark-2);
+}
+.flip__close b {
+  color: var(--ink-dark);
+}
+
+@media (max-width: 759px) {
+  .stat {
+    grid-template-columns: 128px 1fr;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+  }
+  .stat__n {
+    font-size: 46px;
+  }
+  .stat__l {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 760px) {
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .pains {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 20px 0 0;
+    padding: 0;
+    overflow: visible;
+  }
+}
+
+@media (min-width: 900px) {
+  .flip {
+    grid-template-columns: 1.05fr 1fr;
+    gap: clamp(48px, 6vw, 96px);
+  }
+}

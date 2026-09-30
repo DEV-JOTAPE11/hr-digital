@@ -1,0 +1,250 @@
+/* ════════════════════════════ VENDEDOR 24H ════════════════════════════ */
+
+@property --on {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+
+.always {
+  position: relative;
+  height: 330svh;
+  background: var(--night);
+}
+
+.always__stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* ─────────────────────────── interruptor ─────────────────────────── */
+
+.always__before {
+  position: absolute;
+  inset: 8svh 0 auto;
+  z-index: 3;
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  padding: 0 var(--gutter);
+  text-align: center;
+}
+.always__kicker {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3.2vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.switch {
+  --on: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 150px;
+  height: 64px;
+  padding: 6px;
+  border-radius: 999px;
+  background: color-mix(in srgb, #fb5436 calc(var(--on) * 100%), #2a2f45);
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.35),
+    0 0 calc(var(--on) * 60px) rgba(251, 84, 54, calc(var(--on) * 0.6));
+}
+.always.is-animated .switch {
+  justify-content: flex-start;
+}
+.switch__label {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+.switch__label--off {
+  right: 24px;
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+}
+.switch__label--on {
+  left: 24px;
+  color: #fff;
+}
+.switch__knob {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+.switch__knob img {
+  width: 80%;
+  height: auto;
+}
+
+/* ───────────────────────────── foto ───────────────────────────── */
+
+.always__card {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  transform-origin: 50% 64%;
+  will-change: transform;
+}
+.always__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% 40%;
+}
+.always__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 9, 15, 0.75) 0%, rgba(7, 9, 15, 0.15) 38%, rgba(7, 9, 15, 0.6) 62%, rgba(7, 9, 15, 0.96) 100%);
+}
+
+/* ───────────────────────────── cena ───────────────────────────── */
+
+.always__scene {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  height: 100%;
+  padding-top: calc(var(--nav-h) + 12px);
+  padding-bottom: calc(24px + env(safe-area-inset-bottom));
+}
+.always__content {
+  display: grid;
+  gap: 14px;
+  max-width: 580px;
+}
+.always__title {
+  font-size: clamp(44px, 7vw, 108px);
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+}
+.always__sub {
+  max-width: 40ch;
+  font-size: clamp(15px, 1.4vw, 19px);
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.notifs {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  max-width: 400px;
+}
+.notif {
+  display: flex;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 22px;
+  background: rgba(40, 44, 58, 0.55);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 20px 40px -20px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(24px) saturate(170%);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+}
+.notif__app {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #fff;
+}
+.notif__app svg {
+  width: 22px;
+  height: 22px;
+}
+.notif__app--wpp {
+  color: #fff;
+  background: var(--wpp);
+}
+.notif__app--tel {
+  color: #fff;
+  background: #34c759;
+}
+.notif__body {
+  display: grid;
+  min-width: 0;
+  font-size: 13px;
+  line-height: 1.35;
+}
+.notif__top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11.5px;
+  color: var(--ink-3);
+}
+.notif__top b {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.notif__title {
+  font-weight: 650;
+}
+.notif__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--ink-2);
+}
+
+@media (max-width: 767px) {
+  /* reserva o espaço da barra fixa de WhatsApp (.dock) */
+  .always__scene {
+    padding-bottom: calc(84px + env(safe-area-inset-bottom));
+  }
+}
+@media (max-width: 767px) and (max-height: 760px) {
+  .notif:nth-child(4) {
+    display: none;
+  }
+  .always__sub {
+    display: none;
+  }
+}
+@media (max-width: 767px) and (max-height: 620px) {
+  .notif:nth-child(3) {
+    display: none;
+  }
+  .always__title {
+    font-size: 38px;
+  }
+}
+
+@media (min-width: 768px) {
+  .always__scene {
+    flex-direction: row;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .always__scrim {
+    background:
+      linear-gradient(90deg, rgba(7, 9, 15, 0.92) 0%, rgba(7, 9, 15, 0.5) 45%, rgba(7, 9, 15, 0.15) 68%, rgba(7, 9, 15, 0.55) 100%),
+      linear-gradient(180deg, rgba(7, 9, 15, 0.5), transparent 30%, transparent 70%, rgba(7, 9, 15, 0.8));
+  }
+  .notifs {
+    width: 380px;
+    flex: none;
+  }
+}

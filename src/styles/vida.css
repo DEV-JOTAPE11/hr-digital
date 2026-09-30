@@ -1,0 +1,266 @@
+/* ════════════════════════════ MÉTODO VIDA ════════════════════════════ */
+
+.vida {
+  position: relative;
+  background:
+    radial-gradient(70% 55% at 70% 55%, rgba(18, 38, 77, 0.7), transparent 70%),
+    radial-gradient(50% 40% at 10% 10%, rgba(251, 84, 54, 0.08), transparent 70%),
+    var(--night);
+}
+
+.vida__pin {
+  display: flex;
+  align-items: center;
+  min-height: 100svh;
+  padding: clamp(20px, 5svh, 56px) 0;
+  overflow: hidden;
+}
+
+.vida__grid {
+  display: grid;
+  gap: clamp(14px, 3svh, 28px);
+  align-items: center;
+}
+
+.vida__head {
+  display: grid;
+  gap: 12px;
+}
+.vida__title {
+  font-size: clamp(25px, 4vw, 54px);
+  max-width: 20ch;
+}
+
+/* ───────────────────────────── anel ───────────────────────────── */
+
+.vida__visual {
+  position: relative;
+  width: min(74vw, 40svh, 560px);
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+.vida__svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.vida__orbit {
+  fill: none;
+  stroke: rgba(120, 170, 255, 0.14);
+  stroke-width: 1;
+  stroke-dasharray: 2 6;
+}
+.vida__orbit--in {
+  stroke-dasharray: none;
+  stroke: rgba(255, 255, 255, 0.05);
+}
+.vida__track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.07);
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+.vida__arc {
+  fill: none;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+.vida__arc--glow {
+  stroke-width: 16;
+  opacity: 0.7;
+}
+.vida__node text {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.vida__core {
+  position: absolute;
+  inset: 24%;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 4px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(251, 84, 54, 0.22), transparent 80%);
+}
+.vida__core img {
+  width: 78%;
+  height: auto;
+  filter: drop-shadow(0 10px 30px rgba(251, 84, 54, 0.45));
+}
+.vida__core span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* ─────────────────────────── etapas ─────────────────────────── */
+
+.vida__list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.vida__item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: inset 0 0 0 1px var(--hair);
+  transition:
+    opacity 0.5s var(--ease),
+    background 0.5s var(--ease),
+    box-shadow 0.5s var(--ease),
+    transform 0.5s var(--ease);
+}
+.vida__letter {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--c);
+  background: color-mix(in srgb, var(--c) 14%, transparent);
+}
+.vida__item h3 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.vida__step {
+  margin-right: 4px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  vertical-align: 2px;
+}
+.vida__item p {
+  margin-top: 4px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+/* estado ativo (data-active vem do ScrollTrigger) */
+.vida.is-animated .vida__item {
+  opacity: 0.32;
+}
+.vida[data-active="0"] .vida__item:nth-child(1),
+.vida[data-active="1"] .vida__item:nth-child(2),
+.vida[data-active="2"] .vida__item:nth-child(3),
+.vida[data-active="3"] .vida__item:nth-child(4) {
+  opacity: 1;
+  background: color-mix(in srgb, var(--c) 9%, transparent);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--c) 45%, transparent),
+    0 20px 50px -30px var(--c);
+}
+
+/* celular: as etapas se revezam no mesmo lugar */
+@media (max-width: 899px) {
+  .vida__pin {
+    padding-bottom: calc(84px + env(safe-area-inset-bottom));
+  }
+  .vida__list {
+    grid-template-areas: "s";
+  }
+  .vida__item {
+    grid-area: s;
+  }
+  .vida.is-animated .vida__item {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  .vida.is-animated[data-active="-1"] .vida__item:nth-child(1) {
+    opacity: 0.4;
+    transform: none;
+  }
+  .vida[data-active="0"] .vida__item:nth-child(1),
+  .vida[data-active="1"] .vida__item:nth-child(2),
+  .vida[data-active="2"] .vida__item:nth-child(3),
+  .vida[data-active="3"] .vida__item:nth-child(4) {
+    transform: none;
+  }
+  .vida:not(.is-animated) .vida__list {
+    grid-template-areas: none;
+  }
+  .vida:not(.is-animated) .vida__item {
+    grid-area: auto;
+  }
+}
+@media (max-width: 899px) and (max-height: 700px) {
+  .vida__item p {
+    font-size: 13.5px;
+  }
+  .vida__title {
+    font-size: 23px;
+  }
+}
+
+@media (min-width: 900px) {
+  .vida__grid {
+    grid-template-columns: 1fr minmax(0, 1fr);
+    grid-template-areas:
+      "head visual"
+      "list visual";
+    column-gap: clamp(40px, 6vw, 100px);
+    row-gap: 32px;
+  }
+  .vida__head {
+    grid-area: head;
+    align-self: end;
+  }
+  .vida__visual {
+    grid-area: visual;
+    width: min(42vw, 72svh, 560px);
+  }
+  .vida__list {
+    grid-area: list;
+    align-self: start;
+  }
+  .vida__title {
+    font-size: clamp(28px, 3.3vw, 50px);
+    max-width: 18ch;
+  }
+  /* desktop: só a etapa ativa abre a descrição, as outras ficam no título */
+  .vida.is-animated .vida__item p {
+    display: grid;
+    max-height: 0;
+    margin-top: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      max-height 0.6s var(--ease),
+      opacity 0.5s var(--ease),
+      margin 0.6s var(--ease);
+  }
+  .vida[data-active="0"] .vida__item:nth-child(1) p,
+  .vida[data-active="1"] .vida__item:nth-child(2) p,
+  .vida[data-active="2"] .vida__item:nth-child(3) p,
+  .vida[data-active="3"] .vida__item:nth-child(4) p {
+    max-height: 5em;
+    margin-top: 4px;
+    opacity: 1;
+  }
+  .vida__item {
+    align-items: center;
+    padding: 12px 16px;
+  }
+}

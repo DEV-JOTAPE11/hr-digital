@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HR Digital — site
 
-## Getting Started
-
-First, run the development server:
+Site institucional da **HR Digital** (O renascimento do marketing local), em Next.js 16 + TypeScript, com GSAP + ScrollTrigger e rolagem suave (Lenis).
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # build de produção (página estática)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Estrutura
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Pasta | O que tem |
+| --- | --- |
+| `src/lib/site.ts` | **Todo o conteúdo**: textos, nichos da hero, serviços, FAQ, WhatsApp, Instagram |
+| `src/sections/` | Uma seção por arquivo, na ordem da página (`src/app/page.tsx`) |
+| `src/styles/` | CSS de cada seção; tokens de cor/tipografia em `src/app/globals.css` |
+| `src/components/` | Nav, wordmark, ícones, rolagem suave, reveals e barra fixa do celular |
+| `public/brand/` | Fênix da marca (recortada da arte oficial) |
+| `public/img/` | Fotos (nichos e seções), já em WebP |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Seções
 
-## Learn More
+1. **Hero** — palavra gigante do segmento atrás de um iPhone com a busca do Google (swipe/arrastar no celular, autoplay)
+2. **A Subida** — seção fixa: a empresa sobe do 7º ao 1º lugar enquanto se rola
+3. **O problema invisível** — números e dores
+4. **Método VIDA** — anel desenhado pela rolagem
+5. **Vendedor 24h** — interruptor OFF → ON e notificações
+6. **Serviços** (bento) · 7. **Nichos** (faixas) · 8. **Como funciona**
+9. **Fundador** · 10. **Resultados** · 11. **Agendamento** (mensagem pronta no WhatsApp) · 12. **FAQ** · 13. **Fechamento**
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Com `prefers-reduced-motion`, as animações são desligadas e tudo aparece no estado final.

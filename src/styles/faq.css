@@ -1,0 +1,96 @@
+/* ════════════════════════════════ FAQ ════════════════════════════════ */
+
+.faq__grid {
+  display: grid;
+  gap: clamp(36px, 6vw, 96px);
+}
+.faq__head {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+  justify-items: start;
+}
+.faq__head .h2 {
+  max-width: 11ch;
+}
+.faq__cta {
+  margin-top: 6px;
+}
+
+.faq__list {
+  display: grid;
+  border-top: 1px solid var(--hair-dark);
+}
+.qa {
+  border-bottom: 1px solid var(--hair-dark);
+}
+.qa h3 {
+  margin: 0;
+}
+.qa button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  padding: 24px 0;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: clamp(18px, 1.9vw, 23px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--ink-dark);
+}
+.qa__ic {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--hair-dark);
+  transition:
+    transform 0.5s var(--ease),
+    background 0.4s var(--ease),
+    color 0.4s var(--ease);
+}
+.qa__ic svg {
+  width: 18px;
+  height: 18px;
+}
+.qa.is-open .qa__ic {
+  transform: rotate(135deg);
+  color: #fff;
+  background: var(--fire);
+  box-shadow: none;
+}
+.qa__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.55s var(--ease);
+}
+.qa.is-open .qa__panel {
+  grid-template-rows: 1fr;
+}
+.qa__panel > div {
+  overflow: hidden;
+}
+.qa__panel p {
+  max-width: 60ch;
+  padding: 0 52px 26px 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-dark-2);
+}
+
+@media (min-width: 900px) {
+  .faq__grid {
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+  .faq__head {
+    position: sticky;
+    top: calc(var(--nav-h) + 48px);
+  }
+}
